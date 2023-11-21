@@ -178,6 +178,15 @@ export default function Data() {
             width: "100%", 
             maxWidth: "100%",
             margin: "auto", 
+            '@media (max-width:600px)': {
+              alignItems: "flex-start",
+              width:'100vw',
+            },
+            '@media (min-width:601px) and (max-width:1024px)': {
+              flexDirection: "row",
+              alignItems: "center",
+              width:'100vw   !important',
+            },
             }}>
         <div
           style={{
@@ -198,7 +207,7 @@ export default function Data() {
             <div
               key={col.field}
               style={{
-                marginLeft: "100px",
+                marginLeft: "7%",
                 marginTop: "25px",
                 marginBottom: "10px",
                 '@media (max-width:600px)': {
