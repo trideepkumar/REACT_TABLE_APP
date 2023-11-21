@@ -52,7 +52,7 @@ const column = [
 
 const rows = data
 
-const pageSize = 10;
+const pageSize = 100;
 
 export default function Data() {
 
@@ -124,8 +124,10 @@ export default function Data() {
   const endIndex = Math.min(startIndex + pageSize, filteredRows.length);
   const paginatedRows = filteredRows.slice(startIndex, endIndex);
 
-  const handlePageChange = (newPage) => {
-    setCurrentPage(newPage);
+  const handlePageChange = () => {
+    console.log('hello')
+    // setCurrentPage(startIndex);
+    // console.log(currentPage)
   };
 
   return (
@@ -236,14 +238,13 @@ export default function Data() {
               resizable: true,
             }))}
             pagination
-            pageSizeOptions={[pageSize]}
-            checkboxSelection
-            disableRowSelectionOnClick
+            pageSizeOptions={[10]}
             page={currentPage}
             onPageChange={handlePageChange}
+            checkboxSelection
+            disableRowSelectionOnClick
             rowCount={filteredRows.length}
             sx={{ color: "black", height: "60vh", width: "98vw", '@media (max-width:600px)': {width: "90vw"}, '@media (min-width:601px) and (max-width:1024px)': {width: "95vw"} }}
-            className="dataGrid"
           />
         </div>
       </div>
