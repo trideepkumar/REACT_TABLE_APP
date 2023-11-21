@@ -242,7 +242,7 @@ export default function Data() {
             page={currentPage}
             onPageChange={handlePageChange}
             rowCount={filteredRows.length}
-            sx={{ color: "white", height: "60vh", width: "98vw", '@media (max-width:600px)': {width: "90vw"}, '@media (min-width:601px) and (max-width:1024px)': {width: "95vw"} }}
+            sx={{ color: "black", height: "60vh", width: "98vw", '@media (max-width:600px)': {width: "90vw"}, '@media (min-width:601px) and (max-width:1024px)': {width: "95vw"} }}
             className="dataGrid"
           />
         </div>
