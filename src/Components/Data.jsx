@@ -55,6 +55,7 @@ const rows = data
 const pageSize = 10;
 
 export default function Data() {
+
   const [filterText, setFilterText] = useState("");
   const [columnFilters, setColumnFilters] = useState({});
   const [columns, setColumns] = useState(column);
@@ -82,6 +83,7 @@ export default function Data() {
     });
   };
 
+  //for column wise search input render
   const renderHeader = (params) => (
     <div>
       <input
@@ -127,15 +129,26 @@ export default function Data() {
   };
 
   return (
+
     <Box
+    className ="main_box"
       sx={{
         display: "flex",
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
         height: "90vh",
-        width: "100vw",
+        width: "100%",
         marginTop: "25px",
+        '@media (max-width:600px)': {
+          flexDirection: "column",
+          alignItems: "flex-start",
+        },
+        '@media (min-width:601px) and (max-width:1024px)': {
+          flexDirection: "row",
+          alignItems: "center",
+          marginLeft:'10rem'
+        },
       }}
     >
       <Typography sx={{ color: "white" }}>DATA TABLE</Typography>
@@ -152,15 +165,33 @@ export default function Data() {
           backgroundColor: "#333541",
           borderRadius: "5px",
           border: "1px solid #555561",
-          color: "white",
+          color: "grey",
+          '@media (max-width:600px)': {
+            width: "80%",
+          },
+          '@media (min-width:601px) and (max-width:1024px)': {
+            width: "50%",
+          },
         }}
       />
-      <div sx={{ display: "grid" }}>
+      <div sx={{ 
+            width: "100%", 
+            maxWidth: "100%",
+            margin: "auto", 
+            }}>
         <div
           style={{
             display: "flex",
             flexDirection: "row",
             marginBottom: "10px",
+            '@media (max-width:600px)': {
+              flexDirection: "column",
+              alignItems: "flex-start",
+            },
+            '@media (min-width:601px) and (max-width:1024px)': {
+              flexDirection: "row",
+              alignItems: "center",
+            },
           }}
         >
           {columns.map((col) => (
@@ -170,13 +201,22 @@ export default function Data() {
                 marginLeft: "100px",
                 marginTop: "25px",
                 marginBottom: "10px",
+                '@media (max-width:600px)': {
+                  marginLeft: "0px",
+                },
+                '@media (min-width:601px) and (max-width:1024px)': {
+                  marginLeft: "50px",
+                },
               }}
             >
               {renderHeader(col)}
             </div>
           ))}
         </div>
-        <div sx={{ display: "grid", width: "90%" }}>
+        <div sx={{ display: "grid",
+        width: "100%",
+        margin: "auto",
+         }}>
           <DataGridPro
             rows={paginatedRows}
             columns={columns.map((col) => ({
@@ -193,10 +233,14 @@ export default function Data() {
             page={currentPage}
             onPageChange={handlePageChange}
             rowCount={filteredRows.length}
-            sx={{ color: "white", height: "60vh", width: "90vw" }}
+            sx={{ color: "white", height: "60vh", width: "98vw", '@media (max-width:600px)': {width: "90vw"}, '@media (min-width:601px) and (max-width:1024px)': {width: "95vw"} }}
+            className="dataGrid"
           />
         </div>
       </div>
     </Box>
+
+
+
   );
 }
